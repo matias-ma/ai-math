@@ -1,14 +1,14 @@
 # AI math results
 
-I’m broadly interested in numerical analysis (NA) and numerical linear algebra (NLA). This repository collects results I’ve obtained by working with ChatGPT and Claude. My current focus is on conjectures from [Open Problems in Numerical Linear Algebra](https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main).
+This repository collects results I’ve obtained by working with ChatGPT and Claude. I’m broadly interested in numerical analysis and numerical linear algebra. For additional problems in this field see [Open Problems in Numerical Linear Algebra](https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main).
 
-**I’d love to collaborate.** If a proof is unreviewed or I’m still working through it, you’re welcome to work through it with me or write your own exposition. I also welcome suggestions for making papers I’ve written clearer. If you’re curious how I work with ChatGPT and Claude or want to try this on a problem of your own, email me at [mati@princeton.edu](mailto:mati@princeton.edu).
+**I’d love to collaborate.** If a proof is unreviewed or I’m still working through it, feel free to reach out and work through it with me or write your own version. I also welcome suggestions for making papers I’ve written clearer. If you’re curious how I work with ChatGPT and Claude or want to try this on a problem of your own, email me at [mati@princeton.edu](mailto:mati@princeton.edu).
 
 ## Conjectures
 
 | Conjecture | Status |
 | --- | --- |
-| [Does every dimension admit a sign matrix with spectral condition number at most 2?](#sign-matrices) **Yes.** | Working through |
+| [Does every dimension admit a sign matrix with condition number at most 2?](#sign-matrices) **Yes.** | Working through |
 | [Does every completely pivoted Hadamard matrix have growth factor equal to its order?](#hadamard-matrices) **No.** | Written by me |
 
 The status describes my role in the write-up. **Unreviewed** means I haven’t reviewed the AI’s proof. **Working through** means I’m reviewing the argument and editing the draft. **Written by me** means I’ve reviewed the proof and written the paper myself.
