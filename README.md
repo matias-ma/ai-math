@@ -12,6 +12,18 @@ For every positive integer $n$, there is an $n \times n$ matrix with entries in 
 
 GPT-6.2 Pro discovered the proof autonomously. AI wrote most of the current manuscript, and I’m working through the argument and editing the paper. The Lean formalization proves the main result in its Gram-matrix formulation, including the finite cases. [Paper](sign_matrix_condition_two/paper.pdf) · [Lean theorem](sign_matrix_condition_two/lean/Verified.lean) · [Verification instructions](sign_matrix_condition_two/README.md)
 
+### A Hadamard matrix with growth factor greater than its order
+
+The conjecture was that every completely pivoted Hadamard matrix has growth factor equal to its order. A row and column permutation of the order-4096 Sylvester Hadamard matrix gives a counterexample. Its 4,089th pivot has magnitude 4,608, and this is the largest pivot. The construction extends to every order $n=2^d$ with $d\ge 12$, giving growth factor $9n/8$. GPT-6 Astra Pro found the counterexample, and I’m continuing to review and edit the paper. [Paper](hadamard_order_4096/paper.pdf)
+
+To reproduce the result, run the commands below from the repository root. The first script uses the Python standard library to reconstruct the matrix and certify all 4,096 pivots from 124 exact local checks and four lifts. The second independently checks orthogonality and every complete-pivoting step using the generated matrix. It requires NumPy 2.0 or later.
+
+```sh
+cd hadamard_order_4096
+python3 verify_construction.py --write-matrix
+python3 verify_dense.py
+```
+
 ## Proofs I’ve reviewed and written up myself
 
 None yet.
