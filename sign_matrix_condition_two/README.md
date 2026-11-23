@@ -16,19 +16,19 @@ theorem verifiedMain :
   Paper.thm_main verifiedFinite
 ```
 
-**In words.** Every positive dimension admits a sign matrix with spectral condition number at most $2$. In every dimension other than $3$, the same matrix has condition number strictly below $2$. In dimension $3$, the first half gives a matrix that reaches the bound, and the second half proves that no sign matrix can do better. The variable $c$ is a proposed upper bound. If it works for any order-three sign matrix and $c\ge 0$, then $c\ge 2$.
+**In words.** Every positive dimension admits a sign matrix with spectral condition number at most $2$. In every dimension other than $3$, the same matrix has condition number strictly below $2$. In dimension $3$, the two halves give matching bounds. Some sign matrix has condition number at most $2$, and every invertible sign matrix has condition number at least $2$. The optimum is therefore exactly $2$.
 
 ### Reading the definitions in Theorem 1
 
-`IsSign`, `CondLe`, and `CondLt2` are definitions in this project. In the theorem, `Matrix (Fin n) (Fin n) ℝ` is a real matrix whose rows and columns are indexed from $0$ through $n-1$. The definitions below use a generic index type, also called `n`. The annotations `[Fintype n]` and `[DecidableEq n]` let Lean enumerate those indices and test them for equality.
+`IsSign`, `CondLe`, and `CondLt2` are definitions in this project.
 
-**Sign entries.** `IsSign A` checks each individual entry. Both quantifiers range over indices, and `∨` means “or.” [Source](lean/SignCond/Basic.lean)
+**Sign entries.** `IsSign A` means that every entry of $A$ is $+1$ or $-1$. [Source](lean/SignCond/Basic.lean)
 
 ```lean
 def IsSign (A : Matrix n n ℝ) : Prop := ∀ i j, A i j = 1 ∨ A i j = -1
 ```
 
-**An upper bound that allows equality.** Set $G=AA^\top$. In the code, `Aᵀ` is the transpose, the matrix `1` is the identity $I$, and `•` is scalar multiplication. `CondLe A c` asks for one positive real scale $t$ such that $G-tI$ and $c^2tI-G$ are both positive semidefinite. Thus every eigenvalue of $G$ lies in the closed interval $[t,c^2t]$. [Source](lean/SignCond/Basic.lean)
+**An upper bound that allows equality.** Set $G=AA^\top$. `CondLe A c` asks for one positive real scale $t$ such that $G-tI$ and $c^2tI-G$ are both positive semidefinite. Thus every eigenvalue of $G$ lies in the closed interval $[t,c^2t]$. [Source](lean/SignCond/Basic.lean)
 
 ```lean
 def CondLe [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (c : ℝ) : Prop :=
@@ -54,7 +54,7 @@ def PosDef (M : Matrix n n R) :=
   M.IsHermitian ∧ ∀ x : n → R, x ≠ 0 → 0 < star x ⬝ᵥ (M *ᵥ x)
 ```
 
-**Why these are condition-number bounds.** Lean proves the displayed Gram-matrix predicates. The paper translates them into singular values using $\lambda_{\min}(G)=\sigma_{\min}(A)^2$ and $\lambda_{\max}(G)=\sigma_{\max}(A)^2$. The positive lower bound makes $A$ invertible. For $c\ge0$, the closed interval gives $\kappa_2(A)^2=\lambda_{\max}(G)/\lambda_{\min}(G)\le c^2$. The half-open interval gives $\kappa_2(A)^2<4$. Conversely, for an invertible matrix take $t=\sigma_{\min}(A)^2$ to recover the corresponding Gram bounds from the condition number. This last translation is the mathematical interpretation of the Lean statement. [Paper](paper.pdf)
+**Why these are condition-number bounds.** Lean proves the displayed Gram-matrix predicates. The paper translates them into singular values using $\lambda_{\min}(G)=\sigma_{\min}(A)^2$ and $\lambda_{\max}(G)=\sigma_{\max}(A)^2$. The positive lower bound makes $A$ invertible. For $c\ge0$, the closed interval gives $\kappa_2(A)^2=\lambda_{\max}(G)/\lambda_{\min}(G)\le c^2$. The half-open interval gives $\kappa_2(A)^2<4$. Conversely, for an invertible matrix take $t=\sigma_{\min}(A)^2$ to recover the corresponding Gram bounds from the condition number. [Paper](paper.pdf)
 
 ### How Proposition 13 enters the proof
 
@@ -86,11 +86,11 @@ def PropFiniteTau : Prop :=
 
    **A witness you can read from the data.** The length-16 record contains the hexadecimal masks `c4d7`, `b254`, `e622`, `7a0c` in $a,b,c,d$ order. Bit $v$ specifies entry $v$, starting with the least significant bit at $v=0$. A set bit gives $-1$ and a clear bit gives $+1$. The masks have 9, 7, 7 and 7 set bits, giving sums $(-2,2,2,2)$. Thus $s=2$. For these same four sequences, Lean certifies the energy bounds for all 15 frequencies from 1 to 15 using exact cyclic-convolution inequalities. [Certificate data](numerical/certificates_9998.json) · [Replay script](lean/verify_finite.py) · [Fourier bound](lean/SignCond/FiniteEnergy.lean)
 
-2. **`finiteSmallMatrices` proves Proposition 13(2).** For each of the 31 odd orders $n\le63$ other than $3$, there is a sign matrix $A$ and a **rational** $t>0$ with $tI\preceq AA^\top\prec4tI$. The casts `(t : ℝ)` put that rational scale into the real matrix inequalities. The data file also contains an order-3 record. Proposition 13 excludes it because the strict condition-number bound fails there. [Small-matrix proof](lean/SignCond/FiniteSmall.lean)
+2. **`finiteSmallMatrices` proves Proposition 13(2).** For each of the 31 odd orders $n\le63$ other than $3$, there is a sign matrix $A$ and a **rational** $t>0$ with $tI\preceq AA^\top\prec4tI$. The data file also contains an order-3 record. Proposition 13 excludes it because the strict condition-number bound fails there. [Small-matrix proof](lean/SignCond/FiniteSmall.lean)
 
 #### The sequence definitions used above
 
-**Entries and sums.** In the first clause of `PropFiniteTau`, `[NeZero j]` supplies $j\ne0$, and `ZMod j → ℝ` assigns one real entry to each residue modulo $j$. `IsSignVec` restricts each entry to $+1$ or $-1$, and `vsum` adds all $j$ entries once. [Source](lean/SignCond/Defs.lean)
+**Entries and sums.** A length-$j$ sign sequence assigns $+1$ or $-1$ to each residue modulo $j$. `vsum` is the sum of its entries. [Source](lean/SignCond/Defs.lean)
 
 ```lean
 def IsSignVec (x : ZMod j → ℝ) : Prop := ∀ v, x v = 1 ∨ x v = -1
