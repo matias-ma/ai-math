@@ -29,6 +29,8 @@ python3 verify_finite.py
 
 Python reads the existing sequence data and emits Lean proof terms. Lean checks the integer certificates and derives the bounds at every Fourier frequency. Separate Lean certificates establish both Gram inequalities for all required odd matrix orders. The final module, [Verified.lean](lean/Verified.lean), assembles `SignCond.verifiedFinite : PropFiniteTau`, applies it to the main theorem, and prints the axioms for both results. Completed batches are cached under `.lake/build/finite-proof/`. For a short run, use `python3 verify_finite.py --first 16 --last 23`.
 
+The full replay checked all 9,983 sequence lengths. Lean reported exactly `propext`, `Classical.choice`, and `Quot.sound` for both `SignCond.verifiedFinite` and `SignCond.verifiedMain`.
+
 ## Computational verification
 
 From this directory, using Python 3.10 or later with assertions enabled:
