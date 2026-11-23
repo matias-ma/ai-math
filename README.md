@@ -1,6 +1,6 @@
 # AI math results
 
-I use this repository to collect mathematical results I get from working with AI. My current focus is proving conjectures from [Open Problems in Numerical Linear Algebra](https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main), and I may branch into other areas.
+I have a broad interest in the problems collected in [Open Problems in Numerical Linear Algebra](https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main). I’ve worked with ChatGPT and Claude to obtain the results collected here. My current focus is on conjectures from that collection, and I may branch into other areas of mathematics.
 
 **I’d love to collaborate.** If I’m still working through a proof, or if a result is listed as purely AI, you’re welcome to join me or take the proof and write your own exposition. Even for papers I’ve reviewed and written myself, I’d love to hear where an argument could be simpler or an explanation clearer. Email me at [mati@princeton.edu](mailto:mati@princeton.edu).
 
