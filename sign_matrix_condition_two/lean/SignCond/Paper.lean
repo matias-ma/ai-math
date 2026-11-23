@@ -13,7 +13,8 @@ source). The proofs are calls to the development in the other files. Notation is
 
 One input is verified in the paper by a program, not by hand: Proposition `prop:finite`. It is the
 named proposition `PropFiniteTau` (`SignCond/HypothesesTau.lean`, here `prop_finite`) and enters
-Theorem `thm:main` as an explicit hypothesis. Everything else is proved.
+Theorem `thm:main` as an explicit hypothesis. The separate certificate replay in
+`Verified.lean` supplies this argument to obtain `SignCond.verifiedMain`.
 
 Section `sec:small` (exact values of `h(n)` for `n ∈ {7, 9, 10, 13, 14}`): Theorem `thm:small`
 (right after `thm_main`) and Lemmas `lem:tools`, `lem:matching` (at the end, after `lem_power`) are

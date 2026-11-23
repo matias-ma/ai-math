@@ -56,5 +56,9 @@ import SignCond
 #print axioms SignCond.cert14
 #print axioms SignCond.graph6
 
--- The one computational hypothesis, Proposition prop:finite (printed in full)
+-- The finite statement used by the main theorem. Verified.lean audits the full certificate replay.
 #print SignCond.PropFiniteTau
+
+#print axioms SignCond.FiniteEnergy.bounds
+#print axioms SignCond.FiniteWord.wordWitness
+#print axioms SignCond.finiteSmallMatrices

@@ -19,7 +19,15 @@ The project pins Lean and Mathlib to v4.20.0. The labels in `Paper.lean` corresp
 
 Some individual arguments differ. For orders 12, 24, 48 and their subsequent doublings, the manuscript doubles its order-6 witness, while Lean doubles an order-12 Hadamard matrix.
 
-The large-order construction and the five exact small-order values are proved in Lean. The main theorem takes the finite-range proposition, `PropFiniteTau`, as an explicit hypothesis. The following exact computation verifies its witnesses.
+The large-order construction and the five exact small-order values are proved in Lean. The main theorem takes the finite-range proposition, `PropFiniteTau`, as an explicit hypothesis. The Lean replay supplies this hypothesis in `Verified.lean`.
+
+For the finite proposition itself, run the following command from `lean/`:
+
+```sh
+python3 verify_finite.py
+```
+
+Python reads the existing sequence data and emits Lean proof terms. Lean checks the integer certificates and derives the bounds at every Fourier frequency. Separate Lean certificates establish both Gram inequalities for all required odd matrix orders. The final module, [Verified.lean](lean/Verified.lean), assembles `SignCond.verifiedFinite : PropFiniteTau`, applies it to the main theorem, and prints the axioms for both results. Completed batches are cached under `.lake/build/finite-proof/`. For a short run, use `python3 verify_finite.py --first 16 --last 23`.
 
 ## Computational verification
 

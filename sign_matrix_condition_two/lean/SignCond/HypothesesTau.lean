@@ -4,8 +4,8 @@ import SignCond.Defs
 # The one computational input of the rewritten paper
 
 Proposition `prop:finite` is verified in the paper by a program that checks a data file (Section
-`sec:computation`); it is not proved in Lean. It is stated here as the proposition
-`PropFiniteTau`, and every theorem that depends on it takes it as an explicit hypothesis.
+`sec:computation`); the statement below is also the target of the Lean certificate replay
+in `Verified.lean`. The analytic construction takes this proposition as an argument.
 
 Compared with `PropFinite` (`Hypotheses.lean`, the older version of the paper): the range of `j`
 is `16 ≤ j ≤ 9998` (was `≤ 4094`), the upper energy bound is strict (eq. `finitewindow`), and part
