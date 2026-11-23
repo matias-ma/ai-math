@@ -6,10 +6,10 @@ This repository collects results I’ve obtained by working with ChatGPT and Cla
 
 ## Conjectures
 
-| Conjecture | Status |
-| --- | --- |
-| [Does every dimension admit a sign matrix with condition number at most 2?](#sign-matrices) **Yes.** | Working through |
-| [Does every completely pivoted Hadamard matrix have growth factor equal to its order?](#hadamard-matrices) **No.** | Written by me |
+| Conjecture | Status | Lean verified? |
+| --- | --- | --- |
+| [Does every dimension admit a sign matrix with condition number at most 2?](#sign-matrices) **Yes.** | Working through | [Yes](sign_matrix_condition_two/lean/Verified.lean) |
+| [Does every completely pivoted Hadamard matrix have growth factor equal to its order?](#hadamard-matrices) **No.** | Written by me | [Yes](https://github.com/ajt60gaibb/OpenProblemsInNLA/tree/main/linear-systems-and-elimination/IE-03/lean) |
 
 The status describes my role in the write-up. **Unreviewed** means I haven’t reviewed the AI’s proof. **Working through** means I’m reviewing the argument and editing the draft. **Written by me** means I’ve reviewed the proof and written the paper myself.
 
